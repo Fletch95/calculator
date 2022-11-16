@@ -28,15 +28,34 @@ function operate(operator, a, b) {
         case "/":
             divide(a, b);
             break;
+    }
+}
+
+function clear() {
+    display.textContent = "";
+    console.log("cleared");
+}
+
+function buttonHandler(input) {
+    switch (input) {
+        case "clear":
+            clear();
+            break;
+        // TODO: CASE is operator
         default:
-            console.log("Invalid operator");
+            // is number?
+            display.textContent += input;
             break;
     }
 }
 
+
+const display = document.querySelector('.display p');
+console.log(display.textContent);
+
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        console.log(button.textContent);
+        buttonHandler(button.textContent);
     });
 });
