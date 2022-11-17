@@ -33,25 +33,25 @@ function operate(operator, a, b) {
 
 function clear() {
     display.textContent = 0;
-    memory = 0;
+    memory = "";
     console.log("cleared");
 }
 
 function equals() {
     operate(operator, memory, display.textContent);
-    operator = "";
 }
 
 function buttonHandler(input) {
     if (input == "clear") {
         clear();
     } else if (/[/*\-+]/.test(input)) { // Input is an operation button
+        equals();
         memory = display.textContent;
-        console.log(`Memory: ${memory}`);
         operator = input;
         display.textContent = "";
     } else if (input == "=") {
         equals();
+        operator = "";
     } else {
         if (display.textContent == "0") {
             display.textContent = "";
@@ -60,7 +60,7 @@ function buttonHandler(input) {
     }
 }
 
-let memory = 0;
+let memory = "";
 let operator = "";
 
 const display = document.querySelector('.display p');
