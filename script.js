@@ -37,18 +37,18 @@ function clear() {
 }
 
 function buttonHandler(input) {
-    switch (input) {
-        case "clear":
-            clear();
-            break;
-        // TODO: CASE is operator
-        default:
-            // is number?
-            display.textContent += input;
-            break;
+    if (input == "clear") {
+        clear();
+    } else if (/[/*\-+]/.test(input)) {
+        console.log(input);
+        operate(input, memory, display.textContent);
+        display.textContent = memory;
+    } else {
+        display.textContent += input;
     }
 }
 
+let memory = 0;
 
 const display = document.querySelector('.display p');
 console.log(display.textContent);
